@@ -1,3 +1,4 @@
+use tp_base_de_datos;
 -- Tabla pelicula
 create table pelicula(
 id int auto_increment primary key,
