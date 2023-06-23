@@ -215,6 +215,10 @@ insert into idioma_original (id, idioma)
 values(3, 'frances');
 insert into idioma_original (id, idioma)
 values(4, 'latin');
+insert into idioma_original (id, idioma)
+values(5, 'aleman');
+insert into idioma_original (id, idioma)
+values(6, 'griego');
 
 -- cargo peliculas
 insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
@@ -373,7 +377,52 @@ values(8, 9);
 insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
 values(8, 1);
 
+-- cargo Indiana Jones and the Last Crusade
+insert into pelicula (id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values (9, 'Indiana Jones and the Last Crusade', 6, 127, '1989-05-24','Indiana Jones y la última cruzada');
+-- agrego los actores
+insert into actor_pelicula(pelicula_id, actor_id)
+values(9, 5);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(9, 17);
+-- agrego las categorias
+insert into genero_pelicula(pelicula_id, genero_id)
+values(9, 7);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(9, 6);
+insert into genero_pelicula(pelicula_id, genro_id)
+values(9, 4);
+-- agrego los idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(9, 1);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(9, 5);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(9, 6);
+
+-- Jumanji
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values (10,'Jumanji', 7, 101, '1995-12-15', 'Jumanji');
+-- agrego actores
+insert into actor_pelicula(pelicula_id, actor_id)
+values(10, 18);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(10, 19);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(10, 20);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(10, 21);
+-- agrego generos
+insert into genero_pelicula(pelicula_id, genero_id)
+values(10, 4);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(10, 1);
+-- agrego idioma
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(10, 1);
+
 select * from idioma_original;
+select * from idioma_original_pelicula;
 select * from director;
 select * from pelicula;
 select * from genero;
@@ -397,6 +446,54 @@ left join idioma_original_pelicula on pelicula.id = idioma_original_pelicula.pel
 left join idioma_original on idioma_original_pelicula.idioma_original_id = idioma_original.id
 group by pelicula.id, pelicula.titulo;
 
+-- 2 director es actor
+SELECT pelicula.titulo , director.nombre,group_concat(distinct actor.nombre separator ', ') as actores FROM pelicula 
+JOIN director ON pelicula.director_id = director.id
+join actor_pelicula on pelicula.id = actor_pelicula.pelicula_id
+join actor on actor_pelicula.actor_id = actor.id
+where actor.nombre = director.nombre;
+
+-- 3 Los nombres de todas las películas, junto con la cantidad de actores que actúan en cada una,
+-- ordenadas por cantidad de actores en forma descendiente.
+select pelicula.titulo, count(actor.id) as numero_actores from pelicula
+left join actor_pelicula on pelicula.id = actor_pelicula.pelicula_id
+left join actor on actor_pelicula.actor_id = actor.id
+group by pelicula.id, pelicula.titulo
+order by numero_actores desc;
+
+-- 4
+select pelicula.titulo from pelicula
+left join actor_pelicula on pelicula.id = actor_pelicula.pelicula_id
+left join actor on actor_pelicula.actor_id = actor.id
+where actor.id is null;
+
+-- 5 
+select actor.nombre from actor
+join actor_pelicula on actor_pelicula.actor_id = actor.id
+group by actor.nombre, actor_pelicula.actor_id
+having count(actor_pelicula.actor_id) > 1;
+
+-- 6
+select avg(duracion) as promedio_duracion from pelicula
+where fecha_estreno < '2000-01-01';
+
+-- 9
+select pelicula.titulo, pelicula.duracion from pelicula
+where pelicula.titulo = pelicula.titulo_espaniol;
+
+-- 10
+select genero.nombre as genero, count(pelicula.id) as numero_peliculas from genero
+left join genero_pelicula on genero.id = genero_pelicula.genero_id
+left join pelicula on genero_pelicula.pelicula_id = pelicula.id
+group by genero.id, genero.nombre
+order by numero_peliculas desc;
+
+
+
+
+
+
+ 
 
 -- descs
 -- desc pelicula;
