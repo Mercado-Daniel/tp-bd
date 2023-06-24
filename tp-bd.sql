@@ -62,12 +62,12 @@ nombre varchar(100) not null);
 -- premio
 create table premio(
 id int primary key,
-nombre varchar(100),
-categoria varchar(100));
+nombre varchar(100));
 -- pelicula_premio
 create table pelicula_premio(
-pelicula_id int, 
-premio_id int,
+pelicula_id int not null, 
+premio_id int not null,
+cantidad_ganados int,
 foreign key (pelicula_id) references pelicula(id),
 foreign key (premio_id) references premio(id),
 primary key (pelicula_id, premio_id));
@@ -140,6 +140,26 @@ values (7, 'Joe Johnston');
 insert into director(id, nombre)
 values (8, 'James Cameron');
 
+insert into director(id, nombre)
+values (9, 'Irvin Kershner');
+
+insert into director(id, nombre)
+values(10, 'Richard Marquand');
+
+insert into director(id, nombre)
+values(11, 'J.J. Abrams');
+
+insert into director(id, nombre)
+values (12, 'Garreth Edwards');
+
+insert into director(id, nombre)
+values (13, 'Ron Howard');
+
+insert into director(id, nombre)
+values (14, 'Jake Kasdan');
+
+insert into director(id, nombre)
+values (15, 'Rian Johnson');
 select * from director;
 
 -- cargo actores
@@ -206,6 +226,79 @@ values (20, 'Bradley Pierce');
 insert into actor (id, nombre)
 values (21, 'Bonnie Hunt');
 
+insert into actor (id, nombre)
+values (22, 'Liam Neeson');
+
+insert into actor (id, nombre)
+values (23, 'Ewan McGregor');
+
+insert into actor (id, nombre)
+values (24, 'Natali Portman');
+
+insert into actor (id, nombre)
+values (25, 'Jake Lloyd');
+
+insert into actor (id, nombre)
+values (26, 'Christopher Lee');
+
+insert into actor (id, nombre)
+values (27, 'Hayden Christensen');
+
+insert into actor (id, nombre)
+values (28, 'Adam Driver');
+
+insert into actor (id, nombre)
+values (29, 'Daisy Ridley');
+
+insert into actor (id, nombre)
+values (30, 'John Boyega');
+
+insert into actor (id, nombre)
+values (32, 'Felicity Jones');
+
+insert into actor (id, nombre)
+values (33, 'Diego Luna');
+
+insert into actor (id, nombre)
+values (34, 'Alan Tudyk');
+
+insert into actor (id, nombre)
+values (31, 'Donnie Yen');
+
+insert into actor (id, nombre)
+values (35, 'Alde Ehrenreich');
+
+insert into actor (id, nombre)
+values (36, 'Joonas Suotamo');
+
+insert into actor (id, nombre)
+values (37, 'Woody Harrelson');
+
+insert into actor (id, nombre)
+values (38, 'Valeria Clarke');
+
+insert into actor (id, nombre)
+values (39, 'Dwayne Johnson');
+
+insert into actor (id, nombre)
+values (40, 'Kevin Hart');
+
+insert into actor (id, nombre)
+values (41, 'Jack Black');
+
+insert into actor (id, nombre)
+values (42, 'Karen Gillan');
+
+insert into actor (id, nombre)
+values (43, 'Karen Allen');
+
+insert into actor (id, nombre)
+values (44, 'Kate Capshaw');
+
+insert into actor (id, nombre)
+values (45, 'Shia LaBeouf');
+
+
 -- cargo idiomas
 insert into idioma_original (id, idioma)
 values(1, 'ingles');
@@ -219,6 +312,18 @@ insert into idioma_original (id, idioma)
 values(5, 'aleman');
 insert into idioma_original (id, idioma)
 values(6, 'griego');
+insert into idioma_original (id, idioma)
+values(7,'Sinhalese');
+insert into idioma_original (id, idioma)
+values(8, 'Chino');
+insert into idioma_original (id, idioma)
+values(9, 'Arabe');
+insert into idioma_original (id, idioma)
+values(10, 'Nepali');
+insert into idioma_original (id, idioma)
+values(11, 'Hebreo');
+insert into idioma_original (id, idioma)
+values(12, 'Español');
 
 -- cargo peliculas
 insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
@@ -421,15 +526,516 @@ values(10, 1);
 insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
 values(10, 1);
 
+-- cargo peliculas
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(11,'Star Wars: Episode V - The Empire Strikes Back', 9, 124, '1980-05-21','Star Wars: El Imperio Contrataca');
+-- asigno actores a la pelicula
+-- star wars 5
+insert into actor_pelicula (pelicula_id, actor_id)
+values(11, 3);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(11, 4);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(11, 5);
+-- asigno generos a star wars 5
+insert into genero_pelicula(pelicula_id, genero_id)
+values(11,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(11,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(11,3);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(11, 1);
+
+-- cargo peliculas
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(12,'Star Wars: Episode VI - Return of the Jedi', 10, 135, '1983-05-25','Star Wars: El Retorno del Jedi');
+-- asigno actores a la pelicula
+-- star wars 6
+insert into actor_pelicula (pelicula_id, actor_id)
+values(12, 3);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(12, 4);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(12, 5);
+-- asigno generos a star wars 6
+insert into genero_pelicula(pelicula_id, genero_id)
+values(12,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(12,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(12,3);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(12, 1);
+
+
+-- star wars 1
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(13,'Star Wars: Episode I - The Phantom Menace', 2, 133, '1999-05-19','Star Wars: La Amenaza Fantasma');
+-- asigno actores a la pelicula
+-- star wars 1
+insert into actor_pelicula (pelicula_id, actor_id)
+values(13, 22);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(13, 23);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(13, 24);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(13, 25);
+-- asigno generos a star wars 1
+insert into genero_pelicula(pelicula_id, genero_id)
+values(13,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(13,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(13,3);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(13, 1);
+
+-- star wars 2
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(14,'Star Wars: Episode II - Attack of the Clones', 2, 142, '2002-05-16','Star Wars: La Guerra De Los Clones');
+-- asigno actores a la pelicula
+-- star wars 2
+insert into actor_pelicula (pelicula_id, actor_id)
+values(14, 27);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(14, 23);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(14, 24);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(14, 26);
+-- asigno generos a star wars 2
+insert into genero_pelicula(pelicula_id, genero_id)
+values(14,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(14,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(14,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(14,7);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(14, 1);
+
+-- star wars 3
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(15,'Star Wars: Episode III - Revenge of the Sith', 2, 140, '2005-05-19','Star Wars: La Venganza de los Sith');
+-- asigno actores a la pelicula
+-- star wars 3
+insert into actor_pelicula (pelicula_id, actor_id)
+values(15, 27);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(15, 23);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(15, 24);
+-- asigno generos a star wars 2
+insert into genero_pelicula(pelicula_id, genero_id)
+values(15,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(15,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(15,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(15,7);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(15, 1);
+
+-- star wars 7
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(16,'Star Wars: The Force Awakens', 11, 136, '2015-12-14','Star Wars: el despertar de la fuerza');
+-- asigno actores a la pelicula
+-- star wars 7
+insert into actor_pelicula (pelicula_id, actor_id)
+values(16, 5);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(16, 28);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(16, 29);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(16, 30);
+-- asigno generos a star wars 2
+insert into genero_pelicula(pelicula_id, genero_id)
+values(16,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(16,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(16,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(16,7);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(16, 1);
+
+-- star wars
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(17,'Rogue One: A Star Wars Story', 12, 133, '2016-12-10','Rogue One: una historia de Star Wars');
+-- asigno actores a la pelicula
+-- star wars 
+insert into actor_pelicula (pelicula_id, actor_id)
+values(17, 32);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(17, 33);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(17, 34);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(17, 31);
+-- asigno generos a star wars 
+insert into genero_pelicula(pelicula_id, genero_id)
+values(17,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(17,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(17,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(17,7);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(17, 1);
+
+-- peliculas
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(18,'Star Wars: The Last Jedi', 15, 152,'2017-12-09','Star Wars: Episodio VIII - Los ultimos Jedi');
+-- asigno actores a la pelicula
+-- star wars 
+insert into actor_pelicula (pelicula_id, actor_id)
+values(18, 3);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(18, 4);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(18, 28);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(18, 29);
+-- asigno generos a star wars 
+insert into genero_pelicula(pelicula_id, genero_id)
+values(18,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(18,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(18,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(18,7);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(18, 1);
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(19,'Solo: A Star Wars Story', 13,135,'2018-05-10','Solo: una historia de Star Wars');
+-- asigno actores a la pelicula
+-- star wars 
+insert into actor_pelicula (pelicula_id, actor_id)
+values(19, 35);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(19, 36);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(19, 37);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(19, 38);
+-- asigno generos a star wars 
+insert into genero_pelicula(pelicula_id, genero_id)
+values(19,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(19,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(19,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(19,7);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(19, 1);
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(20,'Star Wars: The Rise of Skywalker', 11,155,'2019-12-16','Star Wars: Episodio IX - El ascenso de Skywalker');
+
+-- asigno actores a la pelicula
+-- star wars 
+insert into actor_pelicula (pelicula_id, actor_id)
+values(20, 28);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(20, 29);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(20, 30);
+-- asigno generos a star wars 
+insert into genero_pelicula(pelicula_id, genero_id)
+values(20,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(20,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(20,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(20,7);
+-- cargo idiomas
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(20, 1);
+
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(21,'Back to the Future Part II', 1,108,'1989-11-22','Volver al futuro II');
+insert into actor_pelicula (pelicula_id, actor_id)
+values(21, 9);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(21, 10);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(21, 1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(21,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(21,4);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(21,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(21,7);
+
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(22,'Back to the Future Part III', 1,118,'1990-05-25','Volver al futuro III');
+insert into actor_pelicula (pelicula_id, actor_id)
+values(22, 9);
+insert into actor_pelicula (pelicula_id, actor_id)
+values(22, 10);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(22, 1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(22,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(22,4);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(22,3);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(22,7);
+
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(23,'Raiders of the Lost Ark', 6,115,'1981-06-12','Indiana Jones y Los cazadores del arca perdida');
+insert into actor_pelicula(pelicula_id, actor_id)
+values(23, 5);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(23, 43);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(23,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(23,7);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(23, 1);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(23, 9);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(23, 5);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(23, 3);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(23, 11);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(23, 10);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(23, 12);
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(24,'Indiana Jones and the Temple of Doom', 6,118,'1984-05-23','Indiana Jones y El Templo Maldito');
+insert into actor_pelicula(pelicula_id, actor_id)
+values(24, 5);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(24, 44);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(24,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(24,7);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(24, 1);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(24, 7);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(24, 8);
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(25,'Indiana Jones and the Kingdom of the Crystal Skull', 6,140,'2008-05-18','Indiana Jones y El reino de la calavera de cristal');
+insert into actor_pelicula(pelicula_id, actor_id)
+values(25, 5);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(25, 45);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(25,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(25,7);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(25, 1);
+
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(26,'Jumanji: Welcome to the Jungle',14,119,'2017-12-05','Jumanji: Bienvenidos a la Jungla');
+insert into actor_pelicula(pelicula_id, actor_id)
+values(26, 39);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(26, 40);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(26, 41);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(26, 42);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(26,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(26,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(26,4);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(26, 1);
+insert into pelicula(id, titulo, director_id, duracion, fecha_estreno, titulo_espaniol)
+values(27,'Jumanji: The Next Level', 14,122,'2019-12-04','Jumanji: El Siguiente Nivel');
+insert into actor_pelicula(pelicula_id, actor_id)
+values(27, 39);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(27, 40);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(27, 41);
+insert into actor_pelicula(pelicula_id, actor_id)
+values(27, 42);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(27,6);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(27,1);
+insert into genero_pelicula(pelicula_id, genero_id)
+values(27,4);
+insert into idioma_original_pelicula(pelicula_id, idioma_original_id)
+values(27, 1);
+
+select * from genero;
 select * from idioma_original;
 select * from idioma_original_pelicula;
 select * from director;
 select * from pelicula;
 select * from genero;
+select * from premio;
+select * from pelicula_premio;
 select * from genero_pelicula;
 select * from actor_pelicula;
 select * from actor;
-delete from pelicula where pelicula.id = 0;
+delete from actor where actor.id = 0;
+
+insert into premio (id, nombre)
+values(1,'Oscar');
+insert into premio (id, nombre)
+values(2,'BAFTA');
+insert into premio (id, nombre)
+values(3,'Globos de Oro');
+insert into premio (id, nombre)
+values(4,'Annie');
+
+
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(1,1,7);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(1,2,2);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(1,3,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(2,1,11);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(2,2,0);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(2,3,4);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(3,1,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(3,2,0);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(3,4,2);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(4,1,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(4,2,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(4,3,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(4,4,10);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(5,1,5);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(5,2,3);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(5,3,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(6,1,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(6,2,0);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(6,3,0);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(7,1,6);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(7,2,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(7,3,3);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(8,1,3);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(8,2,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(8,3,0);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(9,1,1);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(9,2,0);
+insert into pelicula_premio (pelicula_id, premio_id,cantidad_ganados)
+values(9,3,0);
+
+-- sagas 
+
+insert into saga(id, nombre)
+values(1,'Star Wars');
+insert into saga(id, nombre)
+values(2,'Back to the Future');
+insert into saga(id, nombre)
+values(3,'Indiana Jones');
+insert into saga(id, nombre)
+values(4,'Jumanji');
+
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(1,1,6);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(6,2,1);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(9,3,3);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(10,4,1);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(11,1,7);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(12,1,8);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(13,1,1);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(14,1,2);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(15,1,3);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(16,1,9);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(17,1,5);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(18,1,10);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(19,1,4);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(20,1,11);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(21,2,2);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(22,2,3);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(23,3,1);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(24,3,2);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(25,3,4);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(26,4,2);
+insert into saga_pelicula(pelicula_id,saga_id,orden)
+values(27,4,3);
+
 
 
 -- pelicula con sus actores
@@ -445,6 +1051,13 @@ left join genero on genero_pelicula.genero_id = genero.id
 left join idioma_original_pelicula on pelicula.id = idioma_original_pelicula.pelicula_id
 left join idioma_original on idioma_original_pelicula.idioma_original_id = idioma_original.id
 group by pelicula.id, pelicula.titulo;
+
+-- 1
+select pelicula.titulo, director.nombre from pelicula
+join director on pelicula.director_id = director.id
+join saga_pelicula on saga_pelicula.pelicula_id = pelicula.id
+join saga on saga_pelicula.saga_id = saga.id
+order by saga_pelicula.saga_id ,saga_pelicula.orden asc;
 
 -- 2 director es actor
 SELECT pelicula.titulo , director.nombre,group_concat(distinct actor.nombre separator ', ') as actores FROM pelicula 
@@ -477,6 +1090,20 @@ having count(actor_pelicula.actor_id) > 1;
 select avg(duracion) as promedio_duracion from pelicula
 where fecha_estreno < '2000-01-01';
 
+-- 7
+select pelicula.titulo from pelicula
+join pelicula_premio on pelicula.id = pelicula_premio.pelicula_id
+join premio on pelicula_premio.premio_id = premio.id 
+join idioma_original_pelicula on pelicula.id = idioma_original_pelicula.pelicula_id
+join idioma_original on idioma_original_pelicula.idioma_original_id = idioma_original.id
+where idioma_original.id <> 1 and premio.nombre = 'Oscar'
+group by pelicula.id, pelicula.titulo;
+
+-- 8
+select actor.nombre from actor
+join actor_pelicula on actor_pelicula.actor_id = actor.id;
+
+
 -- 9
 select pelicula.titulo, pelicula.duracion from pelicula
 where pelicula.titulo = pelicula.titulo_espaniol;
@@ -485,8 +1112,7 @@ where pelicula.titulo = pelicula.titulo_espaniol;
 select genero.nombre as genero, count(pelicula.id) as numero_peliculas from genero
 left join genero_pelicula on genero.id = genero_pelicula.genero_id
 left join pelicula on genero_pelicula.pelicula_id = pelicula.id
-group by genero.id, genero.nombre
-order by numero_peliculas desc;
+group by genero.nombre;
 
 
 
@@ -515,6 +1141,7 @@ order by numero_peliculas desc;
 -- drop table saga_pelicula;
 -- drop table genero_pelicula;
 -- drop table idioma_original;
-
+delete from actor_pelicula where pelicula_id = 15 and actor_id = 30;
+select * from actor_pelicula;
 -- alter table pelicula drop constraint fk_pelicula_director;
 
